@@ -1,0 +1,2 @@
+2024-07-12 13:37:56,514 - conftest.py-INFO - --env写入异常：option names {'--env'} already added[0m
+2024-07-12 13:37:56,675 - conftest.py-INFO - section:test已存在，将删除后新增[0m

@@ -1,0 +1,25 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "jijiadeMacBook-Pro.local",
+    "children" : [ {
+      "name" : "96485-MainThread",
+      "children" : [ {
+        "name" : "账号、密码正确，登录成功",
+        "uid" : "6f4cd4a3256000e5",
+        "parentUid" : "03c842f3e077218195324287cb0ca3f4",
+        "status" : "passed",
+        "time" : {
+          "start" : 1720083424650,
+          "stop" : 1720083424650,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "03c842f3e077218195324287cb0ca3f4"
+    } ],
+    "uid" : "85d4f7c724767446996c25bced02d18a"
+  } ]
+}

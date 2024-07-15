@@ -1,0 +1,2 @@
+2024-07-11 20:21:52,892 - conftest.py-INFO - section:test不存在，直接写入[0m
+2024-07-11 20:21:52,894 - ProcessCaseInfo.py-ERROR - allure信息注入失败，缺少字段：'allureInfo'[0m

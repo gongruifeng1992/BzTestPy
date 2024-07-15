@@ -1,0 +1,11 @@
+[ {
+  "uid" : "6f4cd4a3256000e5",
+  "name" : "账号、密码正确，登录成功",
+  "time" : {
+    "start" : 1720083424650,
+    "stop" : 1720083424650,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

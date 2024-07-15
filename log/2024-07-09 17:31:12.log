@@ -1,0 +1,7 @@
+2024-07-09 17:31:12,337 - conftest.py-INFO - section:test已存在，将删除后新增[0m
+2024-07-09 17:31:12,391 - request_util.py-INFO - -----------------MainThread--------------------[0m
+2024-07-09 17:31:12,391 - request_util.py-INFO - url:  https://testtenant-qy.gpluslife.com/service/service-basic/image/None[0m
+2024-07-09 17:31:12,391 - request_util.py-INFO - headers:  {'User-Agent': '[{"key":"User-Agent","value":"Mozilla/5.0 (Linux; Android 12; SM-N9860 Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/4313 MMWEBSDK/20220903 Mobile Safari/537.36 MMWEBID/9048 MicroMessenger/8.0.28.2240(0x28001C35) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64 MiniProgramEnv/android","enabled":true}]', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json, text/plain, */*', 'Connection': 'keep-alive', 'referer': 'https://servicewechat.com/wxa85ba67d8885ce5f/0/page-frame.html', 'charset': 'utf-8', 'x-request-token': '${ProcessCaseInfo().process_header()}', 'content-type': 'application/json'}[0m
+2024-07-09 17:31:12,391 - request_util.py-INFO - status_code:  200[0m
+2024-07-09 17:31:12,392 - request_util.py-INFO - res.text:  {"code":"500","message":"For input string: \"None\""}[0m
+2024-07-09 17:31:12,392 - request_util.py-INFO - --------------------请求结束---------------------------[0m

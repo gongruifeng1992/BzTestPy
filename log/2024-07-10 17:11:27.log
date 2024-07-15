@@ -1,0 +1,3 @@
+2024-07-10 17:11:27,413 - conftest.py-INFO - section:test已存在，将删除后新增[0m
+2024-07-10 17:11:27,521 - RequestUtil.py-INFO - -----------------MainThread--------------------[0m
+2024-07-10 17:11:27,521 - RequestUtil.py-INFO - url:  https://testtenant-qy.gpluslife.com/service/service-basic/image/1720602687472[0m

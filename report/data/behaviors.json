@@ -1,0 +1,29 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "业务运营支撑系统",
+    "children" : [ {
+      "name" : "登录",
+      "children" : [ {
+        "name" : "用户登录",
+        "children" : [ {
+          "name" : "账号、密码正确，登录成功",
+          "uid" : "6f4cd4a3256000e5",
+          "parentUid" : "78c901fcc8d8a8893292fdf4c800b0e5",
+          "status" : "passed",
+          "time" : {
+            "start" : 1720083424650,
+            "stop" : 1720083424650,
+            "duration" : 0
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "78c901fcc8d8a8893292fdf4c800b0e5"
+      } ],
+      "uid" : "f4f8a92b8275cbf8c0f7280688130cac"
+    } ],
+    "uid" : "fd8c3d4196d5bf3bca5876db73772043"
+  } ]
+}

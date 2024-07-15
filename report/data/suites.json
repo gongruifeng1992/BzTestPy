@@ -1,0 +1,29 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "testcase.login",
+    "children" : [ {
+      "name" : "test_sys_login",
+      "children" : [ {
+        "name" : "TestSysLogin",
+        "children" : [ {
+          "name" : "账号、密码正确，登录成功",
+          "uid" : "6f4cd4a3256000e5",
+          "parentUid" : "91a4bfe3cfa4b991ff2a967026a1500e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1720083424650,
+            "stop" : 1720083424650,
+            "duration" : 0
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "91a4bfe3cfa4b991ff2a967026a1500e"
+      } ],
+      "uid" : "52af9d77558f2eb86682044e8cc68b21"
+    } ],
+    "uid" : "e46053f8cfb9c597ea92a1f8cadf732c"
+  } ]
+}

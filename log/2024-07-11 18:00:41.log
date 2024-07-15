@@ -1,0 +1,2 @@
+2024-07-11 18:00:41,555 - conftest.py-INFO - section:test已存在，将删除后新增[0m
+2024-07-11 18:00:41,559 - ProcessCaseInfo.py-ERROR - allure信息注入失败，缺少字段：'allureInfo'[0m

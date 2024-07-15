@@ -1,0 +1,88 @@
+- allureInfo:
+    epic: 业务运营支撑系统
+    feature: 登录
+    description: 管理后台登录功能测试
+    story: 用户登录
+    title: 账号、密码正确，登录成功
+  requests:
+    - stepName: 1-获取图片验证码
+      url: /service/service-basic/image/${LoginService().get_curr_timestamp()}
+      method: get
+      headers: ${ProcessCaseInfo().process_header()}
+      validate:
+        - exist: [ '${LoginService().get_redis_verifycode()}',"exist" ]
+        - eq: [ "$.status_code","200" ]
+      extract:
+    - stepName: 2-使用验证码登录
+      url: /service/service-basic/account/login
+      method: post
+      headers: ${ProcessCaseInfo().process_header()}
+      json:
+        account: ${LoginService().get_account()}
+        batchNo: ${FileReadUtil(extract.yaml).read_yaml_key(batchNo)}
+        code: ${FileReadUtil(extract.yaml).read_yaml_key(code)}
+        passwd: ${LoginService().get_password()}
+      validate:
+        - eq: [ "$.status_code","200" ]
+        - exist: [ '$.text.data.token',"exist" ]
+        - eq: [ '$.text.code','0' ]
+      extract:
+        - token: '$.text.data.token'
+- allureInfo:
+    epic: 业务运营支撑系统
+    feature: 登录
+    description: 管理后台登录功能测试
+    story: 用户登录
+    title: 密码错误，登录失败
+  requests:
+    - stepName: 1-获取图片验证码
+      url: /service/service-basic/image/${LoginService().get_curr_timestamp()}
+      method: get
+      headers: ${ProcessCaseInfo().process_header()}
+      validate:
+        - exist: [ '${LoginService().get_redis_verifycode()}',"exist" ]
+        - eq: [ "$.status_code","200" ]
+      extract:
+    - stepName: 2-使用验证码登录
+      url: /service/service-basic/account/login
+      method: post
+      headers: ${ProcessCaseInfo().process_header()}
+      json:
+        account: ${LoginService().get_account()}
+        batchNo: ${FileReadUtil(extract.yaml).read_yaml_key(batchNo)}
+        code: ${FileReadUtil(extract.yaml).read_yaml_key(code)}
+        passwd: '00000'
+      validate:
+        - eq: [ "$.status_code","200" ]
+        - eq: [ '$.text.code','500' ]
+        - eq: [ '$.text.message','账号或密码输入错误' ]
+      extract:
+- allureInfo:
+    epic: 业务运营支撑系统
+    feature: 登录
+    description: 管理后台登录功能测试
+    story: 用户登录
+    title: 验证码错误，登录失败
+  requests:
+    - stepName: 1-获取图片验证码
+      url: /service/service-basic/image/${LoginService().get_curr_timestamp()}
+      method: get
+      headers: ${ProcessCaseInfo().process_header()}
+      validate:
+        - exist: [ '${LoginService().get_redis_verifycode()}',"exist" ]
+        - eq: [ "$.status_code","200" ]
+      extract:
+    - stepName: 2-使用验证码登录
+      url: /service/service-basic/account/login
+      method: post
+      headers: ${ProcessCaseInfo().process_header()}
+      json:
+        account: ${LoginService().get_account()}
+        batchNo: ${FileReadUtil(extract.yaml).read_yaml_key(batchNo)}
+        code: '0000'
+        passwd: '1234567890'
+      validate:
+        - eq: [ "$.status_code","200" ]
+        - eq: [ '$.text.code','500' ]
+        - eq: [ '$.text.message','验证码输入错误' ]
+      extract:
