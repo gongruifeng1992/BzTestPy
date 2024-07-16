@@ -39,11 +39,11 @@ def get_env(env):
     """从配置对象中获取自定义参数的值"""
     try:
         if (env == "test"):
-            return FileReadUtil(settings_path).read_conf("test")
+            return FileReadUtil(settings_path).read_conf("test"),env
         elif (env == "tenant"):
-            return FileReadUtil(settings_path).read_conf("tenant")
+            return FileReadUtil(settings_path).read_conf("tenant"),env
         elif (env == "prod"):
-            return FileReadUtil(settings_path).read_conf("prod")
+            return FileReadUtil(settings_path).read_conf("prod"),env
         else:
             logger.error("输入环境参数错误！【test tenant prod】")
     except:
@@ -71,7 +71,7 @@ def set_env(get_env):
     :param get_env:
     :return:
     """
-    section_name=get_env.name
+    conf,section_name=get_env
     try:
         data=FileReadUtil("pytest.ini").read_conf(section_name)
     except:

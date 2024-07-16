@@ -1,0 +1,2 @@
+2024-07-16 13:45:19,891 - conftest.py-INFO - 设置多环境参数env:<bound method Parser.addoption of <_pytest.config.argparsing.Parser object at 0x10ef00c40>>[0m
+2024-07-16 13:45:20,600 - conftest.py-INFO - ----:env函数读取env:test[0m
