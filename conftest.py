@@ -12,14 +12,15 @@ import time
 import jsonpath
 import pytest
 
+from common.ProcessCaseInfo import ProcessCaseInfo
 from utils.FileReadUtil import FileReadUtil
 from utils.LoggerUtil import logger
+from utils.RequestUtil import RequestUtil
 
 settings_path="/Users/jijia/PycharmProjects/BzTestPy/settings.ini"
 
 def pytest_addoption(parser):
-    try:
-        parser.addoption(
+    parser.addoption(
             "--env",
             action="store",
             dest="enviroment",
@@ -28,9 +29,7 @@ def pytest_addoption(parser):
                  "tenant：租户环境"
                  "product：生产环境"
         )
-    except Exception as e:
-        logger.info("--env写入异常："+e.__str__())
-        pass
+
 
 @pytest.fixture(scope="session",autouse=True)
 def env(pytestconfig):

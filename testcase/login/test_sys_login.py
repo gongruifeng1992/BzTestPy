@@ -12,6 +12,7 @@ import os.path
 import allure
 import pytest
 
+from common.LoginService import LoginService
 from common.ProcessCaseInfo import ProcessCaseInfo
 from utils.AssertUtil import AssertUtil
 from utils.ExtractUtil import ExtractUtil
@@ -22,6 +23,11 @@ from utils.YamlUtil import YamlUtil
 filepath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 class TestSysLogin:
+
+    def setup_method(self):
+        print("-----setup_class")
+        LoginService().write_token()
+
     @pytest.mark.parametrize("datas", YamlUtil().get_testcases(filepath))
     def test_sys_login_success_01(self, datas: list):
         process_datas = []

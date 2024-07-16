@@ -10,13 +10,15 @@ import redis as redis
 
 from utils.FileReadUtil import FileReadUtil
 
-conf=FileReadUtil("./pytest.ini").read_conf("test")
 
 
 class RedisUtil:
+    
+    def __init__(self,conf):
+        self.conf=conf
     def create_conn(self):
-        conn = redis.Redis(conf["redis_host"], port=conf["redis_port"], decode_responses=True, username="",
-                           password=conf["redis_password"])
+        conn = redis.Redis(self.conf["redis_host"], port=self.conf["redis_port"], decode_responses=True, username="",
+                           password=self.conf["redis_password"])
         return conn
 
     def set_value(self, **datas):
@@ -25,7 +27,7 @@ class RedisUtil:
         :param datas:
         :return:
         """
-        conn = RedisUtil().create_conn(conf)
+        conn = RedisUtil().create_conn(self.conf)
         for key, value in datas.items():
             conn.set(key, value)
 
@@ -35,7 +37,7 @@ class RedisUtil:
         :param key_name:
         :return:
         """
-        conn = RedisUtil().create_conn()
+        conn = RedisUtil(self.conf).create_conn()
         res = conn.get(key_name)
         return res
 
@@ -45,7 +47,7 @@ class RedisUtil:
         :param key_name:
         :return:
         """
-        conn = RedisUtil().create_conn(conf)
+        conn = RedisUtil().create_conn(self.conf)
         res = conn.delete(key_name)
         return res
 
