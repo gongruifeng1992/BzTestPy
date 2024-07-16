@@ -11,6 +11,3 @@ colorlog~=6.8.2
 requests~=2.32.2
 httprunner~=4.3.5
 jsonpath~=0.82.2
-
-httprunner 4.3.5 requires jmespath<0.10.0,>=0.9.5, but you have jmespath 1.0.1 which is incompatible.
-httprunner 4.3.5 requires urllib3<2.0,>=1.26, but you have urllib3 2.2.2 which is incompatible.

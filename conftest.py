@@ -31,6 +31,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="session",autouse=True)
 def env(pytestconfig):
+    logger.info("----:env函数读取env")
     return pytestconfig.getoption("enviroment")
 
 @pytest.fixture(scope="session",autouse=True)
