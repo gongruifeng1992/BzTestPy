@@ -13,7 +13,7 @@ import pytest
 from utils.FileReadUtil import FileReadUtil
 from utils.LoggerUtil import logger
 
-settings_path = "/Users/jijia/PycharmProjects/BzTestPy/settings.ini"
+settings_path = "./settings.ini"
 
 
 def pytest_addoption(parser):

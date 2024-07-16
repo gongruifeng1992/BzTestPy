@@ -25,7 +25,6 @@ filepath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 class TestSysLogin:
 
     def setup_method(self):
-        print("-----setup_class")
         LoginService().write_token()
 
     @pytest.mark.parametrize("datas", YamlUtil().get_testcases(filepath))
