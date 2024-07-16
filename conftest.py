@@ -38,14 +38,18 @@ def env(pytestconfig):
 @pytest.fixture(scope="session",autouse=True)
 def get_env(env):
     """从配置对象中获取自定义参数的值"""
-    if (env == "test"):
-        return FileReadUtil(settings_path).read_conf("test")
-    elif (env == "tenant"):
-        return FileReadUtil(settings_path).read_conf("tenant")
-    elif (env == "prod"):
-        return FileReadUtil(settings_path).read_conf("prod")
-    else:
-        logger.error("输入环境参数错误！【test tenant prod】")
+    try:
+        if (env == "test"):
+            return FileReadUtil(settings_path).read_conf("test")
+        elif (env == "tenant"):
+            return FileReadUtil(settings_path).read_conf("tenant")
+        elif (env == "prod"):
+            return FileReadUtil(settings_path).read_conf("prod")
+        else:
+            logger.error("输入环境参数错误！【test tenant prod】")
+    except:
+        logger.error("获取环境参数异常！")
+
 
 def write_envir(section_name):
     conf = configparser.ConfigParser()
