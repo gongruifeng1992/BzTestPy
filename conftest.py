@@ -25,7 +25,7 @@ def pytest_addoption(parser):
                  "tenant：租户环境"
                  "product：生产环境"
         )
-    logger.info("设置多环境参数env:"+parser.addoption)
+    logger.info("设置多环境参数env:"+str(parser.addoption))
 
 
 
