@@ -73,11 +73,11 @@ class ProcessCaseInfo:
                             body = {}
                             for para in param_list:
                                 if "Util" in module_name:
-                                    return FileReadUtil("/Users/jijia/PycharmProjects/BzTestPy/extract.yaml").read_yaml()[
+                                    return FileReadUtil("./extract.yaml").read_yaml()[
                                         para]
                                 else:
                                     extract_param.append(
-                                        FileReadUtil("/Users/jijia/PycharmProjects/BzTestPy/extract.yaml").read_yaml()[
+                                        FileReadUtil("./extract.yaml").read_yaml()[
                                             para])
 
                             if "Util" in module_name:
