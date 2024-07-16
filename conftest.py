@@ -13,42 +13,40 @@ import pytest
 from utils.FileReadUtil import FileReadUtil
 from utils.LoggerUtil import logger
 
-settings_path="/Users/jijia/PycharmProjects/BzTestPy/settings.ini"
+settings_path = "/Users/jijia/PycharmProjects/BzTestPy/settings.ini"
+
 
 def pytest_addoption(parser):
     parser.addoption(
-            "--env",
-            action="store",
-            dest="enviroment",
-            default="test",
-            help="test：测试环境"
-                 "tenant：租户环境"
-                 "product：生产环境"
-        )
-    logger.info("设置多环境参数env:"+str(parser.addoption))
+        "--env",
+        action="store",
+        dest="enviroment",
+        default="test",
+        help="test：测试环境"
+             "tenant：租户环境"
+             "product：生产环境"
+    )
+    logger.info("设置多环境参数env:" + str(parser.addoption))
 
 
-
-@pytest.fixture(scope="session",autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def env(pytestconfig):
     return pytestconfig.getoption("enviroment")
 
-@pytest.fixture(scope="session",autouse=True)
+
+@pytest.fixture(scope="session", autouse=True)
 def get_env(env):
-    logger.info("----:get_env函获取到的env:"+env)
+    logger.info("----:get_env函获取到的env:" + env)
 
     """从配置对象中获取自定义参数的值"""
-    try:
-        if (env == "test"):
-            return FileReadUtil(settings_path).read_conf("test"),env
-        elif (env == "tenant"):
-            return FileReadUtil(settings_path).read_conf("tenant"),env
-        elif (env == "prod"):
-            return FileReadUtil(settings_path).read_conf("prod"),env
-        else:
-            logger.error("输入环境参数错误！【test tenant prod】")
-    except:
-        logger.error("获取环境参数异常！")
+    if (env == "test"):
+        return FileReadUtil(settings_path).read_conf("test"), env
+    elif (env == "tenant"):
+        return FileReadUtil(settings_path).read_conf("tenant"), env
+    elif (env == "prod"):
+        return FileReadUtil(settings_path).read_conf("prod"), env
+    else:
+        logger.error("输入环境参数错误！【test tenant prod】")
 
 
 def write_envir(section_name):
@@ -59,37 +57,38 @@ def write_envir(section_name):
         conf.set(section_name, key, value)
     FileReadUtil("pytest.ini").write_conf(conf, "a")
 
+
 def delete_envir(section_name):
     source_data = FileReadUtil("pytest.ini").read_conf_all()
     source_data.remove_section(section_name)
     return source_data
 
 
-@pytest.fixture(scope="session",autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def set_env(get_env):
     """
     将自定义参数值些人全局配置文件中
     :param get_env:
     :return:
     """
-    conf,section_name=get_env
+    conf, section_name = get_env
     try:
-        data=FileReadUtil("pytest.ini").read_conf(section_name)
+        data = FileReadUtil("pytest.ini").read_conf(section_name)
     except:
-        data=None
+        data = None
 
-    if data==None:
-        logger.info("section:"+section_name+"不存在，直接写入")
+    if data == None:
+        logger.info("section:" + section_name + "不存在，直接写入")
         write_envir(section_name)
     else:
-        logger.info("section:"+section_name+"已存在，将删除后新增")
+        logger.info("section:" + section_name + "已存在，将删除后新增")
 
-        delete_data=delete_envir(section_name)
+        delete_data = delete_envir(section_name)
         FileReadUtil("pytest.ini").write_conf(delete_data, "w")
         write_envir(section_name)
 
 
-@pytest.fixture(scope="function",autouse=True)
+@pytest.fixture(scope="function", autouse=True)
 def empty_extract():
     yield
     FileReadUtil("./extract.yaml").delete_yaml_all()
@@ -99,4 +98,3 @@ def empty_extract():
 #     conf=FileReadUtil("./pytest.ini").read_conf_all()
 #     FileReadUtil("./pytest.ini").delet_conf(conf,"test")
 #     FileReadUtil("./pytest.ini").write_conf(conf,"w")
-
