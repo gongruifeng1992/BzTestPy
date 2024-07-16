@@ -15,8 +15,7 @@ from utils.LoggerUtil import logger
 
 settings_path="/Users/jijia/PycharmProjects/BzTestPy/settings.ini"
 
-def pytest_addoption(parser):
-    logger.info("设置多环境参数env")
+def pytest_addoption(parser,pytestconfig):
     parser.addoption(
             "--env",
             action="store",
@@ -26,6 +25,8 @@ def pytest_addoption(parser):
                  "tenant：租户环境"
                  "product：生产环境"
         )
+    logger.info("设置多环境参数env:"+pytestconfig.getoption("enviroment"))
+
 
 
 @pytest.fixture(scope="session",autouse=True)
