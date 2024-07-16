@@ -31,11 +31,12 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="session",autouse=True)
 def env(pytestconfig):
-    logger.info("----:env函数读取env:"+pytestconfig.getoption("enviroment"))
     return pytestconfig.getoption("enviroment")
 
 @pytest.fixture(scope="session",autouse=True)
 def get_env(env):
+    logger.info("----:get_env函获取到的env:"+env)
+
     """从配置对象中获取自定义参数的值"""
     try:
         if (env == "test"):
