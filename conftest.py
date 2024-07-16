@@ -7,19 +7,16 @@
 @data:2024/7/4 1:59 下午
 """
 import configparser
-import time
 
-import jsonpath
 import pytest
 
-from common.ProcessCaseInfo import ProcessCaseInfo
 from utils.FileReadUtil import FileReadUtil
 from utils.LoggerUtil import logger
-from utils.RequestUtil import RequestUtil
 
 settings_path="/Users/jijia/PycharmProjects/BzTestPy/settings.ini"
 
 def pytest_addoption(parser):
+    logger.info("设置多环境参数env")
     parser.addoption(
             "--env",
             action="store",
