@@ -37,7 +37,6 @@ def env(pytestconfig):
 @pytest.fixture(scope="session", autouse=True)
 def get_env(env):
     logger.info("----:get_env函获取到的env:" + env)
-
     """从配置对象中获取自定义参数的值"""
     if (env == "test"):
         return FileReadUtil(settings_path).read_conf("test"), env
