@@ -85,7 +85,7 @@ def set_env(get_env):
         write_envir(section_name)
 
 
-@pytest.fixture(scope="function", autouse=True)
+@pytest.fixture(scope="class", autouse=True)
 def empty_extract():
     yield
     FileReadUtil("./extract.yaml").delete_yaml_all()

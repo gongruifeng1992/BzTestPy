@@ -33,15 +33,15 @@ class ProcessCaseInfo:
         except Exception as e:
             logger.error("allure信息注入失败，缺少字段：" + e.__str__())
 
-    def process_data(self, data: str):
+    def process_data(self, data1):
         """
         将字符串中的函数替换为对应字符串
         :param data:
         :return:
         """
-        if data is None:
+        if data1 is None:
             data = ""
-
+        data=str(data1)
         if "${" and "}" in data:
             for i in range(data.count("${")):
                 if "${" and "}" in data:
@@ -57,7 +57,6 @@ class ProcessCaseInfo:
                     module_name = ""
                     for i in range(len(module_names)):
                         module_name = module_name + module_names[i]
-                    moudule_path = ""
                     if "Util" in module_name:
                         moudule_path = "utils." + module_name
                     else:
@@ -70,7 +69,6 @@ class ProcessCaseInfo:
                         if func_params != '':
                             param_list = func_params.split(",")
                             extract_param = []
-                            body = {}
                             for para in param_list:
                                 if "Util" in module_name:
                                     return FileReadUtil("./extract.yaml").read_yaml()[
@@ -92,23 +90,25 @@ class ProcessCaseInfo:
                             return str(final_data)
 
         else:
-            return data
+            return data1
 
-    def process_headers(self, token=None, content_type="application/json"):
+    def process_headers(self, token, content_type="application/json"):
         """
         组装headers
         :param token:
         :param content_type:
         :return:
         """
+        conf=FileReadUtil("pytest.ini").read_conf("test")["token"]
         headers = {
             "referer": "https://servicewechat.com/wxa85ba67d8885ce5f/0/page-frame.html",
             "charset": "utf-8",
-            "x-request-token": token,
+            "x-request-token": conf ,
             "User-Agent": "[{\"key\":\"User-Agent\",\"value\":\"Mozilla/5.0 (Linux; Android 12; SM-N9860 Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/4313 MMWEBSDK/20220903 Mobile Safari/537.36 MMWEBID/9048 MicroMessenger/8.0.28.2240(0x28001C35) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64 MiniProgramEnv/android\",\"enabled\":true}]",
             "content-type": content_type,
             "accept": "application/json, text/plain, */*"
         }
+
         return headers
 
     def handle_case(self, step: dict,conf):
@@ -143,3 +143,4 @@ class ProcessCaseInfo:
 
     def get_status_code(self, res):
         return str(res.status_code)
+

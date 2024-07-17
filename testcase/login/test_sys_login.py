@@ -26,8 +26,7 @@ class TestSysLogin:
 
     def setup_method(self):
         LoginService().write_token()
-
-    @pytest.mark.parametrize("datas", YamlUtil().get_testcases(filepath))
+    @pytest.mark.parametrize("datas",YamlUtil().get_testcases(filepath))
     def test_sys_login_success_01(self, datas: list):
         process_datas = []
         if isinstance(datas, dict):

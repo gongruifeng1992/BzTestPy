@@ -36,10 +36,6 @@ class LoginService:
         FileReadUtil("./extract.yaml").exist_key_yaml({"code": code})
         return code
 
-
-
-
-
     def get_conf(self,section,key):
         data=FileReadUtil("./pytest.ini").read_conf(section)
         return data[key]
@@ -58,7 +54,7 @@ class LoginService:
         account = source_data["account_token"]
         password = source_data["password_token"]
 
-        headers = ProcessCaseInfo().process_headers()
+        headers = ""
         # 1-获取图片验证码
         url = source_data["host"] + "/service/service-basic/image/" + str(timestamp)
         RequestUtil().sendRequest(url=url, method="get", headers=headers)
@@ -85,6 +81,12 @@ class LoginService:
             logger.info("pytest.ini中无token，写入：" + token[0])
             conf1.set("test", "token", token[0])
             FileReadUtil("./pytest.ini").write_conf(conf1,"w")
+
+    def get_token_pytest(self):
+        token=FileReadUtil("./pytest.ini").read_conf("test")["token"]
+        return token
+
+
 
 
 

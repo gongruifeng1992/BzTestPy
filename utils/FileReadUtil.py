@@ -49,7 +49,6 @@ class FileReadUtil:
         """
         conf = configparser.ConfigParser()
         conf.read(self.filepath, encoding="utf8")
-        logger.info("read_conf读取结果："+str(conf.sections()))
         return conf[section]
 
 

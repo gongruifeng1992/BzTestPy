@@ -1,0 +1,18 @@
+- allureInfo:
+    epic: 业务运营支撑系统
+    feature: 店务
+    description: 店务相关功能测试
+    story: 服务开单
+    title: 数据正确，普通订单开单成功
+  requests:
+    - stepName: 1-根据手机号查询用户信息
+      url: /service-bz/service-crm/memberBz/memberQuickQuery
+      method: post
+      headers: ${ProcessCaseInfo().process_header()}
+      json:
+        memberTel: 15228805014
+        pageable:
+          pageIndex: 1
+          pageSize: 10
+      validate:
+      extract:
