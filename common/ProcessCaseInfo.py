@@ -42,7 +42,7 @@ class ProcessCaseInfo:
         if data1 is None:
             data = ""
         data=str(data1)
-        if "${" and "}" in data:
+        if "$" and "{" and "}" in data:
             for i in range(data.count("${")):
                 if "${" and "}" in data:
                     start_index = data.index("${")
