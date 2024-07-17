@@ -44,7 +44,7 @@ class ProcessCaseInfo:
         data=str(data1)
         if "${" and "}" in data:
             for i in range(data.count("${")):
-                if re.match("(.*)\${(.*)",data):
+                if re.match("(.*)\${(.*)",data) is not None:
                     start_index = data.index("${")
                     end_index = data.index("}")
 
@@ -145,5 +145,5 @@ class ProcessCaseInfo:
     def get_status_code(self, res):
         return str(res.status_code)
 if __name__ == '__main__':
-    source="${loh.wfre(${cdsv.desf())}"
-    print(re.match("(.*)\${(.*)",source))
+    source="{'pageabe':1}"
+    print(re.match("(.*)\${(.*)",source) is not None)
