@@ -44,7 +44,7 @@ class ProcessCaseInfo:
         data=str(data1)
         if "${" and "}" in data:
             for i in range(data.count("${")):
-                if re.match("(.*)\${(.*)",source):
+                if re.match("(.*)\${(.*)",data):
                     start_index = data.index("${")
                     end_index = data.index("}")
 
