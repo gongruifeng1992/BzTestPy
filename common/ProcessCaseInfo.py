@@ -89,7 +89,8 @@ class ProcessCaseInfo:
                             reslut = getattr(extract_data, func_name, None)()
                             final_data = data.replace(data[start_index: end_index + 1], str(reslut))
                             return str(final_data)
-
+            else:
+                return data1
         else:
             return data1
 
