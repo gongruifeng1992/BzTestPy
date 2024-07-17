@@ -42,11 +42,12 @@ class ProcessCaseInfo:
         if data1 is None:
             data = ""
         data=str(data1)
-        if "$" and "{" and "}" in data:
+        if "${" and "}" in data:
             for i in range(data.count("${")):
-                if "${" and "}" in data:
+                if re.match("(.*)\${(.*)",source):
                     start_index = data.index("${")
                     end_index = data.index("}")
+
                     func_full_name = data[start_index + 2:end_index]
                     names = func_full_name.split(").")
                     func_name = names[1][:names[1].index('(')]
@@ -143,4 +144,6 @@ class ProcessCaseInfo:
 
     def get_status_code(self, res):
         return str(res.status_code)
-
+if __name__ == '__main__':
+    source="${loh.wfre(${cdsv.desf())}"
+    print(re.match("(.*)\${(.*)",source))
